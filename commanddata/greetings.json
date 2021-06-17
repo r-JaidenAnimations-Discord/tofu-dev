@@ -1,0 +1,8 @@
+{
+    "joinMessages": [
+        "Oh look, {user} came to be a test subject for Tofu........ hewwo thewe"
+    ],
+    "leaveMessages": [
+		"Oh no, {user} got free and is on the run."
+    ]
+}
