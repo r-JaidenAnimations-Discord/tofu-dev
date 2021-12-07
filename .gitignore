@@ -1,3 +1,11 @@
-node_modules
-*.DS_Store
-config.json
+# Use `npm i` to install them
+/node_modules/
+
+# Token
+token.json
+
+# Spotlight
+.DS_Store*
+
+# Package Lock file
+package-lock.json

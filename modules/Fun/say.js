@@ -1,69 +1,34 @@
-const { tofuGreen } = require('#colors');
-const Discord = require('discord.js');
-const Tantrum = require('#tantrum');
-const { checkMessageStaff } = require('#functions/staffChecks.js');
+const { colors: { tofuGreen } } = require('../../constants.json');
+const { MessageEmbed, Permissions } = require('discord.js');
 
 module.exports = {
 	name: 'say',
-	helpTitle: 'Say',
 	category: 'Fun',
-	usage: 'say [#channel] (embed) [message]',
-	description: 'Mess with members',
-	isDMAllowed: false,
-	isDeprecated: false,
-	isHidden: true,
-	//aliases: [],
 	cooldown: 0,
 	execute: async function(client, message, args) {
-
-		let channel = message.mentions.channels.first() ||
+		const channel = message.mentions.channels.first() ||
 			message.guild.channels.cache.find(c => c.id === args[0]) ||
 			message.guild.channels.cache.find(c => c.name === args[0]);
 
-		if (!checkMessageStaff(client, message)) return;
+		if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.channel.send('Nah mate, not you.');
 
-		if (!channel) {
-			try {
-				return message.channel.send('Where the actual F*CK do you want me to put that? My ass?');
-			} catch (e) {
-				throw new Tantrum(client, 'say.js', 'Error on sending channel not defined error', e);
-			}
-		}
+		if (!channel) return message.channel.send('Where the actual F*CK do you want me to put that? My ass?');
 
 		if (args[1] === 'embed') {
-			if (!args.slice(2).join(' ')) {
-				try {
-					return message.reply('All fine and good, but like. What to send. Can\'t you guys do this first try for once?')
-				} catch (e) {
-					throw new Tantrum(client, 'say.js', 'Error on sending no message error', e);
-				}
-			}
+			if (!args.slice(2).join(' ')) return message.reply('All fine and good, but like. What to send. Can\'t you guys do this first try for once?');
 
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setColor(tofuGreen)
 				.setDescription(args.slice(2).join(' '));
 
-			try {
-				channel.send(embed);
-				await message.react('✅');
-			} catch (e) {
-				throw new Tantrum(client, 'say.js', 'Error on sending message', e);
-			}
+			channel.send({ embeds: [embed] });
+			await message.react('✅');
 		}
 		else {
-			if (!args.slice(1).join(' ')) {
-				try {
-					return message.reply('All fine and good, but like. What to send. Can\'t you guys do this first try for once?');
-				} catch (e) {
-					throw new Tantrum(client, 'say.js', 'Error on sending no message error', e);
-				}
-			}
-			try {
-				channel.send(args.slice(1).join(' '));
-				await message.react('✅');
-			} catch (e) {
-				throw new Tantrum(client, 'say.js', 'Error on sending message', e);
-			}
+			if (!args.slice(1).join(' ')) return message.reply('All fine and good, but like. What to send. Can\'t you guys do this first try for once?');
+
+			channel.send(args.slice(1).join(' '));
+			await message.react('✅');
 		}
 	},
 };

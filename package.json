@@ -1,29 +1,24 @@
 {
   "name": "tofu-dev-bot",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Bot for running Tofu's Development server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
     "start": "nodemon"
   },
   "keywords": [],
   "author": "TeraBaito, MaxTechnics",
   "license": "Creative Commons Attribution-NonCommercial 4.0 International",
   "dependencies": {
-    "ascii-table": "0.0.9",
-    "beautify": "0.0.8",
+    "ascii-table": "^0.0.9",
+    "beautify": "^0.0.8",
     "chalk": "^4.1.0",
-    "common-tags": "^1.8.0",
-    "discord.js": "^12.5.3",
+    "common-tags": "^1.8.2",
+    "discord.js": "^13.3.1",
     "fs-extra": "^9.1.0"
   },
-  "devDependencies": {},
-  "imports": {
-    "#functions/*": "./functions/*",
-    "#commandData/*": "./commanddata/*",
-    "#tantrum": "./functions/tantrum.js",
-    "#colors": "./commanddata/colors.json",
-    "#memberIDs": "./commanddata/memberIDs.json"
+  "devDependencies": {
+    "eslint": "^7.32.0"
   }
 }

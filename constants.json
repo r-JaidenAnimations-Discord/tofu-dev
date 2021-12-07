@@ -1,0 +1,25 @@
+{
+    "colors": {
+        "tofuGreen": "#4aa428",
+        "tofuError": "#FF0000"
+    },
+    "memberIDs": {
+        "maxID": "488064501816492047",
+        "shrimpID": "291684752363225098",
+        "teraID": "558264504736153600"
+    },
+    "joinMessages": [
+		"Oh look, {user} came to be a test subject for Tofu........ hewwo thewe"
+	],
+	"leaveMessages": [
+		"Oh no, {user} got free and is on the run."
+	],
+    "config": {
+        "prefix": "|",
+        "botProfile": "https://cdn.discordapp.com/avatars/778997567554977842/c22f7c00bb2b2a46acdcc75c9479c55a.webp",
+        "tofuBotServerID": "784348580055220234",
+        "generalChannelID": "855034627315073055",
+        "rulesChannelID": "855036283515306014",
+        "tofuSubjectRoleID": "855038948266082344"
+    }
+}
