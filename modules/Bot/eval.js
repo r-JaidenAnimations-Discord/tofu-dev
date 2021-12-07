@@ -40,7 +40,6 @@ module.exports = {
 
 			message.channel.send({ embeds: [embed] });
 		}
-
 		// ... all your eval shit
 	},
 };
